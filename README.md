@@ -1,27 +1,21 @@
-Fix Network Padrão (Windows)
+# Fix Network Padrão
 
-Script simples em Python para automatizar três ações comuns de troubleshooting de rede no Windows:
+Script simples em Python para resolver problemas comuns de rede no Windows.  
+Ele faz três ações clássicas de “reset básico” que geralmente resolvem 90% dos problemas de conexão:
 
-Limpeza do cache DNS (ipconfig /flushdns)
+- Limpa o cache DNS (`ipconfig /flushdns`)
+- Remove tickets Kerberos (`klist purge`)
+- Renova o IP da máquina (`ipconfig /renew`)
 
-Purga dos tickets Kerberos (klist purge)
+Ideal para uso rápido no dia a dia de suporte.
 
-Renovação do endereço IP (ipconfig /renew)
+---
 
-Ideal para chamados de suporte, máquinas em domínio ou rotinas rápidas de correção.
+# Como funciona
 
-Uso
-python fix_network.py
+O script executa automaticamente os comandos do Windows via `os.system()` e adiciona quebras de linha para deixar a saída mais limpa no terminal.
 
-Requisitos
-
-Windows
-
-Python 3.x
-
-Permissão administrativa (necessário para alguns comandos)
-
-Código
+```python
 import os
 
 def fix_network_padrao():
@@ -35,9 +29,3 @@ def fix_network_padrao():
     print(quebra_linha)
 
 fix_network_padrao()
-
-Notas
-
-Útil como ferramenta rápida para suporte N1/N2.
-
-Pode ser expandido com logs, menu interativo ou validação do sistema operacional.
